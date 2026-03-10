@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JK Electricidad - Rosario | 5.0 ★ Google</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --azul-oscuro: #002b5c; /* Tomado de tu logo */
+            --azul-brillante: #0072bc;
+            --naranja: #f37021; /* Tomado de tu logo */
+            --blanco: #ffffff;
+            --gris-fondo: #f4f7f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--gris-fondo);
+        }
+
+        /* --- Header --- */
+        header {
+            background: var(--azul-oscuro);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .logo-container img {
+            height: 60px; /* Ajustá esto según tu imagen real */
+            filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 600;
+        }
+
+        .btn-call {
+            background: var(--naranja);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .btn-call:hover {
+            transform: scale(1.05);
+            background: #d65d1a;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(rgba(0,43,92,0.8), rgba(0,43,92,0.8)), url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=1470') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 10%;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .google-badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 30px;
+            border-radius: 15px;
+            border: 1px solid var(--naranja);
+            display: inline-block;
+        }
+
+        .stars { color: #ffcc00; font-size: 1.5rem; }
+
+        /* --- Info Cards --- */
+        .info-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 50px 5%;
+            margin-top: -50px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .card:hover { transform: translateY(-10px); }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--azul-brillante);
+            margin-bottom: 15px;
+        }
+
+        /* --- Detalle Negocio --- */
+        .business-details {
+            padding: 60px 5%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            background: white;
+        }
+
+        .details-text { flex: 1; min-width: 300px; }
+        .details-text h2 { color: var(--azul-oscuro); margin-bottom: 20px; font-size: 2rem; }
+
+        .info-row {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .info-row i {
+            margin-right: 15px;
+            color: var(--naranja);
+            width: 25px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--azul-oscuro);
+            color: white;
+            padding: 40px 5%;
+            text-align: center;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 2000;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/5493417207395" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header>
+        <div class="logo-container">
+            <img src="https://i.ibb.co/C3mH0m3/logo-jk.jpg" alt="JK Electricidad Logo">
+        </div>
+        <nav class="nav-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#contacto">Ubicación</a>
+        </nav>
+        <a href="tel:03417207395" class="btn-call"><i class="fas fa-phone"></i> 0341 720-7395</a>
+    </header>
+
+    <section class="hero" id="inicio">
+        <h1>Energía confiable para Rosario</h1>
+        <p>Expertos en materiales eléctricos y soluciones para el hogar y la industria. Más de 30 años iluminando tus proyectos.</p>
+        
+        <div class="google-badge">
+            <div class="stars">★★★★★</div>
+            <p><strong>5.036 opiniones en Google</strong></p>
+            <p><small>Puntaje impecable de 5.0 Estrellas</small></p>
+        </div>
+    </section>
+
+    <section class="info-section" id="servicios">
+        <div class="card">
+            <i class="fas fa-bolt"></i>
+            <h3>Materiales Eléctricos</h3>
+            <p>Cables, térmicas, disyuntores y todo para tu instalación segura.</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-lightbulb"></i>
+            <h3>Iluminación LED</h3>
+            <p>La mejor tecnología para ahorrar energía en tu casa u oficina.</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-tools"></i>
+            <h3>Asesoramiento</h3>
+            <p>Personal capacitado para ayudarte a elegir lo que necesitás.</p>
+        </div>
+    </section>
+
+    <section class="business-details" id="contacto">
+        <div class="details-text">
+            <h2>Vení a visitarnos</h2>
+            <div class="info-row">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>José Ingenieros 7852, S2000 Rosario, Santa Fe</p>
+            </div>
+            <div class="info-row">
+                <i class="fas fa-clock"></i>
+                <p>Abierto hoy: Cierra a las 19:30 hs</p>
+            </div>
+            <div class="info-row">
+                <i class="fas fa-star"></i>
+                <p>Líderes en Rosario con 5,036 reseñas positivas</p>
+            </div>
+            <br>
+            <a href="https://www.google.com/maps/dir//José+Ingenieros+7852,+Rosario" target="_blank" class="btn-call" style="background: var(--azul-brillante);">CÓMO LLEGAR</a>
+        </div>
+        <div style="flex: 1; min-width: 300px; border-radius: 15px; overflow: hidden; height: 300px;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3349.5222045582855!2d-60.718501!3d-32.91000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDU0JzM2LjAiUyA2MMKwNDMnMDYuNiJX!5e0!3m2!1ses!2sar!4v1620000000000!5m2!1ses!2sar" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 JK Electricidad - Rosario, Santa Fe.</p>
+        <p><small>Pasión por la electricidad y el servicio al cliente.</small></p>
+    </footer>
+
+</body>
+</html>
