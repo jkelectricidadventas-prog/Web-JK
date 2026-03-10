@@ -6,9 +6,9 @@
     <title>JK Electricidad | Casa de Electricidad Fisherton</title>
     
     <link rel="icon" type="image/jpg" href="logo.jpg">
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
@@ -20,7 +20,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { line-height: 1.6; color: #333; background-color: var(--gris-fondo); scroll-behavior: smooth; }
+        body { line-height: 1.6; color: #333; background-color: var(--gris-fondo); overflow-x: hidden; }
 
         /* --- Header --- */
         header {
@@ -32,10 +32,22 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
-        .logo-container img { height: 60px; border-radius: 5px; }
+        .logo-container img { 
+            height: 100px; /* Logo más grande */
+            transition: transform 0.3s;
+        }
+        .logo-container img:hover { transform: scale(1.1); }
+
+        .nav-social a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 20px;
+            transition: 0.3s;
+        }
+        .nav-social a:hover { color: var(--naranja); }
 
         .btn-call {
             background: var(--naranja);
@@ -44,38 +56,56 @@
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            transition: 0.3s;
             display: flex;
             align-items: center;
             gap: 10px;
+            transition: 0.3s;
         }
+        .btn-call:hover { background: #e66010; box-shadow: 0 0 15px var(--naranja); }
 
-        .btn-call:hover { transform: scale(1.05); background: #e66010; }
-
-        /* --- Hero Section --- */
+        /* --- Hero con Fondo Animado --- */
         .hero {
-            background: linear-gradient(rgba(0,43,92,0.85), rgba(0,43,92,0.85)), url('https://images.unsplash.com/photo-1558402529-d2638a7023e9?auto=format&fit=crop&q=80&w=1470') no-repeat center center/cover;
-            height: 70vh;
+            position: relative;
+            background: var(--azul-oscuro);
+            height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             color: white;
-            padding: 0 5%;
+            overflow: hidden;
         }
 
-        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; color: var(--blanco); }
-        .hero p { font-size: 1.3rem; margin-bottom: 2rem; max-width: 700px; font-weight: 300; }
+        /* Efecto de rayos/electricidad de fondo */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png'), 
+                        radial-gradient(circle at center, rgba(0,114,188,0.4) 0%, transparent 70%);
+            z-index: 1;
+        }
 
-        .google-badge {
-            background: white;
-            color: var(--azul-oscuro);
-            padding: 20px 40px;
+        .hero-content { position: relative; z-index: 2; padding: 0 5%; }
+        
+        .hero h1 { font-size: 4rem; margin-bottom: 1rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        
+        /* --- Stats --- */
+        .stats-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+        .stat-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px 25px;
             border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--azul-brillante);
         }
-        .stars { color: #ffcc00; font-size: 1.5rem; margin-bottom: 5px; }
+        .stat-item h3 { color: var(--naranja); font-size: 1.8rem; }
 
         /* --- Seccion de Stock --- */
         .stock-banner {
@@ -84,81 +114,46 @@
             text-align: center;
             padding: 20px;
             font-weight: bold;
-            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
-
-        /* --- Info Cards --- */
-        .info-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            padding: 60px 5%;
-        }
-
-        .card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-bottom: 4px solid transparent;
-            transition: 0.3s;
-        }
-
-        .card:hover { border-bottom: 4px solid var(--naranja); transform: translateY(-5px); }
-        .card i { font-size: 3rem; color: var(--naranja); margin-bottom: 20px; }
-        .card h3 { margin-bottom: 15px; color: var(--azul-oscuro); }
 
         /* --- Mapa y Contacto --- */
+        .contact-section { padding: 60px 5%; }
         .contact-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 0;
             background: white;
-            margin: 40px 5%;
-            border-radius: 20px;
+            border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
-
         .contact-info { flex: 1; padding: 50px; min-width: 350px; }
-        .map-box { flex: 1; min-width: 350px; min-height: 450px; }
-
-        .info-item { display: flex; align-items: flex-start; margin-bottom: 25px; gap: 15px; }
-        .info-item i { color: var(--naranja); font-size: 1.5rem; margin-top: 5px; }
-        .info-item h4 { color: var(--azul-oscuro); margin-bottom: 5px; }
+        .map-box { flex: 1; min-width: 350px; height: 500px; }
 
         /* --- Footer --- */
-        footer { background: var(--azul-oscuro); color: white; padding: 40px 5%; text-align: center; }
+        footer { background: var(--azul-oscuro); color: white; padding: 50px 5%; text-align: center; }
+        .footer-logo { height: 80px; margin-bottom: 20px; }
 
         .whatsapp-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25d366;
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 35px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            z-index: 1000;
-            transition: 0.3s;
+            position: fixed; bottom: 30px; right: 30px;
+            background: #25d366; width: 65px; height: 65px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 35px; z-index: 1000; transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(37,211,102,0.3);
         }
-        .whatsapp-btn:hover { transform: scale(1.1); }
+        .whatsapp-btn:hover { transform: scale(1.1) rotate(10deg); }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .contact-info { padding: 30px; }
+            .hero h1 { font-size: 2.5rem; }
+            .stats-container { flex-direction: column; gap: 10px; }
+            .logo-container img { height: 70px; }
         }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/5493417207395?text=Hola%20JK%20Electricidad,%20vengo%20de%20la%20web%20y%20necesito..." class="whatsapp-btn" target="_blank">
+    <a href="https://wa.me/5493417207395" class="whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -166,87 +161,81 @@
         <div class="logo-container">
             <img src="logo.jpg" alt="JK Electricidad Logo">
         </div>
-        <a href="tel:03417207395" class="btn-call">
-            <i class="fas fa-phone-alt"></i> 0341 720-7395
-        </a>
+        <div style="display: flex; align-items: center;">
+            <div class="nav-social">
+                <a href="https://www.instagram.com/electricidadjk/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <a href="tel:03417207395" class="btn-call">
+                <i class="fas fa-phone-alt"></i> LLAMAR AHORA
+            </a>
+        </div>
     </header>
 
     <section class="hero">
-        <h1>Casa de electricidad Fisherton</h1>
-        <p>En JK Electricidad encontrás <strong>todo lo que buscás</strong>. Desde el tornillo más chico hasta materiales para obras industriales. ¡Stock permanente y el mejor asesoramiento de Rosario!</p>
-        
-        <div class="google-badge">
-            <div class="stars">★★★★★</div>
-            <p><strong>50 reseñas de 5 estrellas</strong> en Google</p>
-            <p><small>La confianza de nuestros vecinos nos avala</small></p>
+        <div class="hero-content" data-aos="zoom-in">
+            <h1>Casa de electricidad Fisherton</h1>
+            <p>Especialistas en materiales eléctricos con el mayor stock de la zona.</p>
+            
+            <div class="stats-container">
+                <div class="stat-item">
+                    <h3>+100</h3>
+                    <p>Productos</p>
+                </div>
+                <div class="stat-item">
+                    <h3>+1000</h3>
+                    <p>Ventas Realizadas</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50 ★</h3>
+                    <p>Reseñas Google</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <div class="stock-banner">
-        ⚡ ¡TENEMOS DE TODO! CABLES • ILUMINACIÓN • TÉRMICAS • HERRAMIENTAS • TABLEROS ⚡
+        ⚡ STOCK PERMANENTE • ATENCIÓN PERSONALIZADA • ENVÍOS EN ROSARIO ⚡
     </div>
 
-    <section class="info-section">
-        <div class="card">
-            <i class="fas fa-boxes"></i>
-            <h3>Stock Completo</h3>
-            <p>No des vueltas. Tenemos todo lo necesario para instalaciones domiciliarias y grandes proyectos en un solo lugar.</p>
-        </div>
-        <div class="card">
-            <i class="fas fa-truck-loading"></i>
-            <h3>Atención Inmediata</h3>
-            <p>Vení, pedí y llevate lo que necesitás al instante. Valoramos tu tiempo y el de tu obra.</p>
-        </div>
-        <div class="card">
-            <i class="fas fa-user-check"></i>
-            <h3>Asesoramiento Real</h3>
-            <p>Si no sabés qué llevar, nosotros te guiamos. Soluciones técnicas pensadas para tu seguridad y bolsillo.</p>
-        </div>
-    </section>
-
-    <section class="contact-container">
-        <div class="contact-info">
-            <h2 style="color: var(--azul-oscuro); margin-bottom: 30px; font-size: 2rem;">Vení a nuestro local</h2>
+    <section class="contact-section">
+        <div class="contact-container" data-aos="fade-up">
+            <div class="contact-info">
+                <h2 style="color: var(--azul-oscuro); font-size: 2.5rem; margin-bottom: 20px;">Encontranos en Fisherton</h2>
+                <p style="margin-bottom: 30px;">Estamos ubicados en el corazón de Fisherton para brindarte la mejor atención y soluciones eléctricas rápidas.</p>
+                
+                <div style="margin-bottom: 20px;">
+                    <p><strong><i class="fas fa-map-marker-alt" style="color: var(--naranja);"></i> Dirección:</strong><br>José Ingenieros 7852, Rosario.</p>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <p><strong><i class="fas fa-clock" style="color: var(--naranja);"></i> Horarios:</strong><br>Lun a Vie: 8:00-12:30 / 15:30-19:30<br>Sáb: 8:30-13:00</p>
+                </div>
+                
+                <a href="https://www.instagram.com/electricidadjk/" target="_blank" class="btn-call" style="background: #E1306C; justify-content: center; margin-top: 20px;">
+                    <i class="fab fa-instagram"></i> SEGUINOS EN INSTAGRAM
+                </a>
+            </div>
             
-            <div class="info-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <div>
-                    <h4>Dirección</h4>
-                    <p>José Ingenieros 7852, S2000 Rosario, Santa Fe</p>
-                </div>
+            <div class="map-box">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3349.332349764516!2d-60.72591632422115!3d-32.91579677360548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b6534261763795%3A0xc3f798e3b4356e62!2sJos%C3%A9%20Ingenieros%207852%2C%20S2000%20Rosario%2C%20Santa%20Fe!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
-
-            <div class="info-item">
-                <i class="fas fa-clock"></i>
-                <div>
-                    <h4>Horarios de Atención</h4>
-                    <p>Lunes a Viernes: 08:00 a 12:30 | 15:30 a 19:30<br>Sábados: 08:30 a 13:00</p>
-                </div>
-            </div>
-
-            <div class="info-item">
-                <i class="fas fa-thumbs-up"></i>
-                <div>
-                    <h4>¿Por qué elegirnos?</h4>
-                    <p>Porque en Fisherton no hay otra tienda con nuestro compromiso, variedad y las mejores calificaciones de la zona.</p>
-                </div>
-            </div>
-
-            <a href="https://wa.me/5493417207395" class="btn-call" style="justify-content: center; margin-top: 20px;">
-                CONSULTAR STOCK POR WHATSAPP
-            </a>
-        </div>
-        
-        <div class="map-box">
-            <iframe src="http://googleusercontent.com/maps.google.com/3" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </section>
 
     <footer>
-        <img src="logo.jpg" alt="Logo JK" style="height: 50px; margin-bottom: 15px; border-radius: 5px;">
-        <p>© 2026 JK Electricidad - Tu casa de electricidad en Fisherton.</p>
-        <p><small>Rosario, Santa Fe.</small></p>
+        <img src="logo.jpg" alt="JK Logo" class="footer-logo">
+        <h3>JK ELECTRICIDAD</h3>
+        <p>José Ingenieros 7852, Fisherton - Rosario</p>
+        <div style="margin-top: 20px;" class="nav-social">
+            <a href="https://www.instagram.com/electricidadjk/"><i class="fab fa-instagram"></i></a>
+        </div>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
 </body>
 </html>
